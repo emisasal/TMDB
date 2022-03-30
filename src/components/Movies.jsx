@@ -1,0 +1,30 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
+
+import { API_KEY, tmdbAPI } from "../utils/apiValues"
+import Grid from "./Grid"
+
+const Movies = () => {
+  const [dataList, setDataList] = useState([])
+
+  useEffect(() => {
+    axios
+      .get(`${tmdbAPI}/discover/movie${API_KEY}`)
+      .then(res => res.data.results)
+      .then(list => setDataList(list))
+  }, [])
+
+  return (
+    <>
+      <div>
+        <br />
+        <h2 className="title is-5">Movies:</h2>
+        <hr></hr>
+        <br />
+        <Grid dataList={dataList} type={"movie"} />
+      </div>
+    </>
+  )
+}
+
+export default Movies
