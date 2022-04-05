@@ -17,7 +17,7 @@ const Home = () => {
     <>
       <noscript>Home</noscript>
       <br />
-      <div>
+      <div className="container is-max-desktop">
         <form onSubmit={handleSubmit}>
           <input
             {...search}

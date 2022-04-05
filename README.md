@@ -14,7 +14,7 @@ Proyecto creado desde cero que muestra películas y shows de tv utilizando la AP
 - React
 - Passport (con bcrypt)
 - Redux
-- Postgress
+- Postgres
 
 ### Requisitos
 
