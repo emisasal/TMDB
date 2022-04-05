@@ -1,6 +1,6 @@
 import React from "react"
 import axios from "axios"
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import useInput from "../hooks/useInputs"
 import { sendLoginRequest } from "../store/user"
 import { Link, useNavigate } from "react-router-dom"
@@ -9,10 +9,8 @@ const Register = () => {
   const name = useInput("name")
   const email = useInput("email")
   const password = useInput("password")
-  const user = useSelector(state => state.user)
 
   const navigate = useNavigate()
-
   const dispatch = useDispatch()
 
   const handleRegisterSubmit = e => {
