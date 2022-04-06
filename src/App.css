@@ -1,5 +1,27 @@
+html {
+  background-color: rgb(240, 240, 240);
+}
+
 button {
   margin-right: 6px;
+}
+
+.title-custom {
+  text-align: center;
+}
+
+.card-custom {
+  /* display: flex; */
+  /* flex-direction: column; */
+  height: 100%;
+}
+
+.cardcontent-custom {
+  padding: 12px;
+}
+
+.cardsubt-custom {
+  margin-top: 10px;
 }
 
 #title {
@@ -18,7 +40,6 @@ button {
 
 #img-s {
   width: 180px;
-  /* height: 100%; */
 }
 
 #img-l {

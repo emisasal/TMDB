@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import { Route, Routes } from "react-router-dom"
-import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 
 import { persistUser } from "./store/user"
@@ -18,7 +17,6 @@ import User from "./components/User"
 import "./App.css"
 
 const App = () => {
-  const user = useSelector(state => state.user)
   const dispatch = useDispatch()
 
   useEffect(() => {
