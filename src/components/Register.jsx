@@ -32,61 +32,64 @@ const Register = () => {
 
   return (
     <>
-      <form className="section" onSubmit={handleRegisterSubmit}>
-        <div className="field">
-          <label className="label">Name</label>
-          <div className="control">
-            <input
-              {...name}
-              aria-label="User name"
-              className="input"
-              type="text"
-              required
-              placeholder="Your name here"
-            />
-          </div>
-        </div>
+      <div className="box column is-half is-offset-one-quarter">
+          <form className="section" onSubmit={handleRegisterSubmit}>
+            <h1 className="title title-custom">Create Account</h1>
+            <div className="field">
+              <label className="label">Name</label>
+              <div className="control">
+                <input
+                  {...name}
+                  aria-label="User name"
+                  className="input"
+                  type="text"
+                  required
+                  placeholder="Your name here"
+                />
+              </div>
+            </div>
 
-        <div className="field">
-          <label className="label">Email</label>
-          <div className="control">
-            <input
-              {...email}
-              aria-label="Email address"
-              className="input"
-              type="email"
-              required
-              placeholder="your@mail.com"
-            />
-          </div>
-        </div>
+            <div className="field">
+              <label className="label">Email</label>
+              <div className="control">
+                <input
+                  {...email}
+                  aria-label="Email address"
+                  className="input"
+                  type="email"
+                  required
+                  placeholder="your@mail.com"
+                />
+              </div>
+            </div>
 
-        <div className="field">
-          <label className="label">Password</label>
-          <div className="control">
-            <input
-              {...password}
-              aria-label="Password"
-              className="input"
-              type="password"
-              placeholder="Password"
-            />
-          </div>
-        </div>
+            <div className="field">
+              <label className="label">Password</label>
+              <div className="control">
+                <input
+                  {...password}
+                  aria-label="Password"
+                  className="input"
+                  type="password"
+                  placeholder="Password"
+                />
+              </div>
+            </div>
 
-        <div className="field is-grouped">
-          <div className="control">
-            <button type="submit" className="button is-link">
-              Register
-            </button>
-          </div>
-          <div className="control">
-            <Link to="/">
-              <button className="button is-link is-light">Cancel</button>
-            </Link>
-          </div>
-        </div>
-      </form>
+            <div className="field is-grouped">
+              <div className="control">
+                <button type="submit" className="button is-link">
+                  Register
+                </button>
+              </div>
+              <div className="control">
+                <Link to="/">
+                  <button className="button is-link is-light">Cancel</button>
+                </Link>
+              </div>
+            </div>
+          </form>
+      </div>
     </>
   )
 }

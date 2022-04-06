@@ -12,8 +12,9 @@ const Card = ({ data, type }) => {
 
   return (
     <>
-      <div className="card">
+      <div className="card card-custom">
         <Link to={`/${type || data.media_type}/${data.id}`}>
+
           <div className="card-image level-item">
             <figure className="image" id="img-s">
               <img
@@ -30,7 +31,7 @@ const Card = ({ data, type }) => {
               <p className="subtitle" id="txt-m">
                 Release date: {`(${data.release_date || data.first_air_date})`}
               </p>
-              <p className="subtitle is-6"><FaRegStar style={{ color: "black" }}/> {data.vote_average * 10}%</p>
+              <p className="subtitle is-6 cardsubt-custom"><FaRegStar style={{ color: "black" }}/> {data.vote_average * 10}%</p>
             </div>
           </div>
         </Link>
@@ -40,7 +41,7 @@ const Card = ({ data, type }) => {
             <div className="card-footer-item" >
               <Favorite />
             </div>
-            <div className="card-footer-item">
+            <div className="card-footer-item cardfooter-custom">
               <p className="content" id="txt-s">
                 add / remove favourites
               </p>

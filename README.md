@@ -4,17 +4,17 @@
 
 ### Objetivos
 
-Proyecto creado desde cero que muestra películas y shows de tv utilizando la API de [_The Movie Database_ (TMDB)](https://www.themoviedb.org/).
+Proyecto creado desde cero en el Coding Bootcamp Plataforma 5 que muestra películas y shows de tv utilizando la API de [_The Movie Database_ (TMDB)](https://www.themoviedb.org/).
 
 
 ### Tecnologías Utilizadas
 
-- Bulma
 - Express
 - React
 - Passport (con bcrypt)
 - Redux
 - Postgres
+- Bulma
 
 ### Requisitos
 
@@ -44,10 +44,6 @@ Proyecto creado desde cero que muestra películas y shows de tv utilizando la AP
 - _Loguear_ usuarios a través de su cuenta en Google.
 
 ### Pledu
-
-Hacé [_click_ acá](https://pledu.plataforma5.la/bootcamp/omdb/solo%20week-581874b7) para acceder al módulo correspondiente en Pledu.
-
------- ////// ------
 
 Front-End
 src
