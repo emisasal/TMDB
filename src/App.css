@@ -11,17 +11,19 @@ button {
 }
 
 .card-custom {
-  /* display: flex; */
-  /* flex-direction: column; */
   height: 100%;
-}
-
-.cardcontent-custom {
-  padding: 12px;
 }
 
 .cardsubt-custom {
   margin-top: 10px;
+}
+
+.single-custom {
+  margin-top: 10px
+}
+
+.form-custom {
+  margin-top: 30px
 }
 
 #title {

@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom"
 
 import { sendLoginRequest } from "../store/user"
 import useInput from "../hooks/useInputs"
+import { alertLogin } from "../utils/alerts"
 
 const LogIn = () => {
   const dispatch = useDispatch()
@@ -12,16 +13,16 @@ const LogIn = () => {
 
   const navigate = useNavigate()
 
-  const handleLoginSubmit = e => {
+  const handleLoginSubmit = async e => {
     e.preventDefault()
-    dispatch(sendLoginRequest({ email: email.value, password: password.value }))
-      .then(res => navigate("/"))
-      .catch(err => console.log(`Failed login: ${err.message}`))
+    await dispatch(sendLoginRequest({ email: email.value, password: password.value }))
+    alertLogin()
+    navigate("/")
   }
 
   return (
     <>
-      <div className="box column is-half is-offset-one-quarter">
+      <div className="box column is-half is-offset-one-quarter form-custom">
         <form className="section" onSubmit={handleLoginSubmit}>
         <h1 className="title title-custom">Login</h1>
           <div className="field">
