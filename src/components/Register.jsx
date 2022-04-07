@@ -32,7 +32,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="box column is-half is-offset-one-quarter">
+      <div className="box column is-half is-offset-one-quarter form-custom">
           <form className="section" onSubmit={handleRegisterSubmit}>
             <h1 className="title title-custom">Create Account</h1>
             <div className="field">
