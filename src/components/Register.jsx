@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import useInput from "../hooks/useInputs"
 import { sendLoginRequest } from "../store/user"
 import { Link, useNavigate } from "react-router-dom"
+import { alertRegister } from "../utils/alerts"
 
 const Register = () => {
   const name = useInput("name")
@@ -26,7 +27,10 @@ const Register = () => {
           sendLoginRequest({ email: email.value, password: password.value })
         )
       )
-      .then(() => navigate("/"))
+      .then(() => {
+        alertRegister()
+        navigate("/")
+      })
       .catch(err => console.log(`Failed login: ${err.message}`))
   }
 
