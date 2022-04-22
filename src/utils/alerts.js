@@ -13,3 +13,17 @@ export const alertLogin = () => {
         }
       })
 }
+
+export const alertRegister = () => {
+  let timerInterval
+  return Swal.fire({
+      title: 'Successfully Registered',
+      timer: 1500,
+      didOpen: () => {
+        Swal.showLoading()
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    })
+}

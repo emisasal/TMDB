@@ -13,6 +13,7 @@ import TvShows from "./components/TvShows"
 import Register from "./components/Register"
 import LogIn from "./components/LogIn"
 import User from "./components/User"
+import NotFound from "./commons/NotFoud"
 
 import "./App.css"
 
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<LogIn />} />
           <Route path="user" element={<User />} />
+          <Route path="*" element={<NotFound replace to="/" />} />
         </Routes>
       </div>
     </div>
