@@ -1,36 +1,20 @@
 const express = require("express")
 const passport = require("passport")
-const { User } = require("../models")
+// const { User } = require("../models")
 const router = express.Router()
+const userController = require("../controllers/userController")
 
 // Register
-router.post("/register", (req, res) => {
-  User.create(req.body).then(user => {
-    res.send(user)
-  })
-})
-
+router.post("/register", userController.register)
 // Login
-router.post("/login", passport.authenticate("local"), (req, res) => {
-  res.send(req.user)
-})
-
+router.post('/login', passport.authenticate('local'), userController.login)
 // Logout
-router.post("/logout", function (req, res, next) {
-  req.logout()
-  res.send({})
-})
+router.post('/logout', userController.logout)
+// Persist
+router.get("/me", userController.persist)
 
-// Persistencia del usuario.
-router.get("/me", (req, res) => {
-  if (!req.user) {
-    return res.sendStatus(401)
-  }
-  res.send(req.user)
-})
-
-router.use("/", (req, res) => {
-  res.sendStatus(404)
-})
+// router.use("/", (req, res) => {
+//   res.sendStatus(404)
+// })
 
 module.exports = router
