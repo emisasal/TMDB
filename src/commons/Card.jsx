@@ -38,7 +38,7 @@ const Card = ({ data, type }) => {
 
         {user.id ? (
           <footer className="card-footer level-item">
-            <div className="card-footer-item" >
+            <div className="card-footer-item">
               <Favorite />
             </div>
             <div className="card-footer-item cardfooter-custom">
