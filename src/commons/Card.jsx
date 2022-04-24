@@ -1,12 +1,18 @@
 import { Link } from "react-router-dom"
-import { useSelector } from "react-redux"
-
+import { useDispatch, useSelector } from "react-redux"
 import { FaRegStar } from "react-icons/fa"
 
 import Favorite from "./Favourite"
+import { postFavMovie } from "../store/favMovies"
 
 const Card = ({ data, type }) => {
   const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
+
+  const handleFav = (data) => {
+    if (type === "movie") dispatch(postFavMovie(data))
+    
+  }
 
   if (!data.id) return <p>No data</p>
 
@@ -38,8 +44,10 @@ const Card = ({ data, type }) => {
 
         {user.id ? (
           <footer className="card-footer level-item">
-            <div className="card-footer-item">
-              <Favorite />
+            <div className="card-footer-item" >
+              
+              <Favorite onClick={() => handleFav(data.id)}/>
+     
             </div>
             <div className="card-footer-item cardfooter-custom">
               <p className="content" id="txt-s">

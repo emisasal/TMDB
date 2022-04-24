@@ -13,8 +13,6 @@ router.post('/logout', userController.logout)
 // Persist
 router.get("/me", userController.persist)
 
-// router.use("/", (req, res) => {
-//   res.sendStatus(404)
-// })
+router.put("/addMovie", userController.addMovie)
 
 module.exports = router

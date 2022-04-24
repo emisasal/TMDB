@@ -12,9 +12,12 @@ exports.addMovie = (req, res) => {
 }
 
 exports.removeMovie = (req, res) => {
-  const { userId, movie } = req.query
+  const { userId, movieId } = req.query
+  console.log("BODY", req.params)
+  console.log("MOVIE_ID", movieId)
+  console.log("USER", userId)
   try {
-    Movie.destroy({ where: { movie: movie, userId: userId } })
+    Movie.destroy({ where: { id: movieId, userId: userId } })
       .then(() => res.sendStatus(202))
       .catch(err => res.status(500).send(err))
   } catch (err) {

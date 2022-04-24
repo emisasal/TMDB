@@ -1,3 +1,4 @@
+const { Op } = require("sequelize")
 const { User } = require("../models")
 
 exports.register = (req, res) => {
@@ -41,6 +42,19 @@ exports.persist = (req, res) => {
     if (!req.user) {
       return res.sendStatus(401)
     }
+    res.send(req.user)
+  } catch (error) {
+    console.log("ERROR: ", error)
+  }
+}
+
+exports.addMovie = (req, res) => {
+  const {favMovie} = req.body
+  try {
+    User.update({
+      favMovies: {[Op.in]: favMovies.push(favMovie)}
+    }
+    )
     res.send(req.user)
   } catch (error) {
     console.log("ERROR: ", error)

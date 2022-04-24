@@ -40,19 +40,17 @@ app.use(
         User.findOne({ where: { email } })
         .then(user => {
           if (!user) {
-            // email not found
             return done(null, false)
           }
-          
           user.hash(password, user.salt).then(hash => {
             if (hash !== user.password) {
-              return done(null, false) // wrong password
+              return done(null, false)
             }
             
-            return done(null, user) // success :D
+            return done(null, user)
           })
         })
-        .catch(done) // done(err)
+        .catch(done)
       }
       )
       )
