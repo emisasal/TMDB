@@ -10,19 +10,22 @@ const User = () => {
   const favMovies = useSelector(state => state.favMovies)
   const dispatch = useDispatch()
 
-  const deleteFavMovie = movieId => {
-    dispatch(removeFavMovie(movieId))
-  }
-
   useEffect(() => {
     dispatch(getFavMovies())
-  }, [dispatch])
+  }, [])
+
+  const handleDelete = async movieId => {
+    await dispatch(removeFavMovie(movieId))
+    dispatch(getFavMovies())
+  }
 
   if (!favMovies[0]) return <p>No data</p>
 
+  console.log("FAV_MOVIES", favMovies)
+
   return (
     <>
-      <div>
+      <div className="container is-max-desktop">
         <br />
         <h1 className="title is-5">Welcome {user.name}!</h1>
       </div>
@@ -34,6 +37,7 @@ const User = () => {
       </div>
       <br />
 
+      <div className="table-container">
       <table className="table is-fullwidth is-striped is-hoverable">
         <thead>
           <tr>
@@ -62,7 +66,7 @@ const User = () => {
                 {
                   <FaRegTrashAlt
                     style={{ cursor: "pointer" }}
-                    onClick={() => deleteFavMovie(movie.id)}
+                    onClick={() => handleDelete(movie.id)}
                   />
                 }
               </td>
@@ -70,6 +74,7 @@ const User = () => {
           ))}
         </tbody>
       </table>
+      </div>
     </>
   )
 }
