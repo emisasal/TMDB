@@ -49,12 +49,10 @@ exports.persist = (req, res) => {
 }
 
 exports.addMovie = (req, res) => {
-  const {favMovie} = req.body
+  const {favMovie, favShow} = req.body
+  console.log("SHOW", favMovie)
   try {
-    User.update({
-      favMovies: {[Op.in]: favMovies.push(favMovie)}
-    }
-    )
+    User.update({favMovie: favMovie}, {where: {id: 1} })
     res.send(req.user)
   } catch (error) {
     console.log("ERROR: ", error)
