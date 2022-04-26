@@ -4,13 +4,10 @@ const db = require("../config/db")
 class TvShow extends S.Model {}
 
 TvShow.init({
-    name: {
+
+    showApi: {
         type: S.STRING,
-        allowNull: false,
-    },
-    tvshow: {
-        type: S.INTEGER,
-        allowNull: false,
+        // allowNull: false,
     }
 }, {sequelize: db, modelName: "tvshow"})
 

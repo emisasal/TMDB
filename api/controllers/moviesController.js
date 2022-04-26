@@ -1,23 +1,35 @@
-const { Movie } = require("../models")
+const { Movie, User } = require("../models")
 
-exports.addMovie = (req, res) => {
-  const { userId, movie, name } = req.body
+exports.getMovies = (req, res) => {
+  const { userId } = req.body
   try {
-    Movie.create({ name: name, movie: movie, userId: userId })
-      .then(data => res.send(data))
-      .catch(() => res.status(500).send("Already added"))
+    Movie.findAll({ where: { userId: userId } })
+      .then(movies => res.send(movies))
+      .catch(err => res.status(500).send(err))
+  }catch(err){
+    console.log("ERROR: ", err)
+  }
+}
+// Seguir con esto!
+exports.addMovie = (req, res) => {
+  const { userId, movieApi } = req.body
+  console.log("BODY", movieApi)
+  try {
+    Movie.findOrCreate({ 
+      where: { userId, movieApi }, 
+      defaults: { movieApi }
+    }).then(data => {
+      if (data[1]) res.status(201).send(data[0])
+      else res.status(400).send(data[1])})
   } catch (err) {
     console.log("ERROR: ", err)
   }
 }
 
 exports.removeMovie = (req, res) => {
-  const { userId, movieId } = req.query
-  console.log("BODY", req.params)
-  console.log("MOVIE_ID", movieId)
-  console.log("USER", userId)
+  const { userId, movieApi } = req.body
   try {
-    Movie.destroy({ where: { id: movieId, userId: userId } })
+    Movie.destroy({ where: { movieApi: movieApi, userId: userId } })
       .then(() => res.sendStatus(202))
       .catch(err => res.status(500).send(err))
   } catch (err) {

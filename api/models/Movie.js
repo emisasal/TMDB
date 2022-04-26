@@ -4,13 +4,13 @@ const db = require("../config/db")
 class Movie extends S.Model {}
 
 Movie.init({
-    name: {
+    // name: {
+    //     type: S.STRING,
+    //     allowNull: false,
+    // },
+    movieApi: {
         type: S.STRING,
-        allowNull: false,
-    },
-    movie: {
-        type: S.INTEGER,
-        allowNull: false,
+        // allowNull: false,
     },
 }, {sequelize: db, modelName: "movie"})
 

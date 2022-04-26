@@ -3,10 +3,10 @@ const router = express.Router()
 
 const users = require("./users")
 const movies = require("./movies")
-const tvshows = require("./tvshows")
+const tvshows = require("./shows")
 
 router.use("/user", users)
-router.use("/favourites/movie", movies)
-router.use("/favourites/tv", tvshows)
+router.use("/movies", movies)
+router.use("/shows", tvshows)
 
 module.exports = router
