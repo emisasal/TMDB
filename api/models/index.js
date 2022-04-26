@@ -5,4 +5,4 @@ const TvShow = require("./TvShow")
 Movie.belongsTo(User)
 TvShow.belongsTo(User)
 
-module.exports = { User, Movie }
+module.exports = { User, Movie, TvShow }

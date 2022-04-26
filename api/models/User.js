@@ -27,21 +27,6 @@ User.init(
     salt: {
       type: S.STRING,
     },
-    favMovies: {
-      type: S.ARRAY(S.STRING),
-      defaultValue: [],
-      // set: (favMovies) => {
-      //   favMovies = favMovies || []
-      //   if (typeof favMovies === "string") {
-      //     favMovies = favMovies.split(",").map(str => str.trim())
-      //   }
-      //   this.setDataValue("favMovies", favMovies)
-      // },
-    },
-    favShows: {
-      type: S.ARRAY(S.STRING),
-      defaultValue: [],
-    },
   },
   { sequelize: db, modelName: "user" }
 )
