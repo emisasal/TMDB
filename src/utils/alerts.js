@@ -4,7 +4,7 @@ export const alertLogin = () => {
     let timerInterval
     return Swal.fire({
         title: 'Successfully Logged In!',
-        timer: 1500,
+        timer: 1000,
         didOpen: () => {
           Swal.showLoading()
         },
@@ -18,7 +18,7 @@ export const alertRegister = () => {
   let timerInterval
   return Swal.fire({
       title: 'Successfully Registered!',
-      timer: 1500,
+      timer: 1000,
       didOpen: () => {
         Swal.showLoading()
       },
@@ -32,7 +32,7 @@ export const alertLogout = () => {
   let timerInterval
   return Swal.fire({
       title: 'Successfully Logged out',
-      timer: 1500,
+      timer: 1000,
       didOpen: () => {
         Swal.showLoading()
       },

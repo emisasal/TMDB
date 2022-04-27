@@ -36,25 +36,3 @@ exports.logout = (req, res) => {
     console.log("ERROR: ", error)
   }
 }
-
-exports.persist = (req, res) => {
-  try {
-    if (!req.user) {
-      return res.sendStatus(401)
-    }
-    res.send(req.user)
-  } catch (error) {
-    console.log("ERROR: ", error)
-  }
-}
-
-exports.addMovie = (req, res) => {
-  const {favMovie, favShow} = req.body
-  console.log("SHOW", favMovie)
-  try {
-    User.update({favMovie: favMovie}, {where: {id: 1} })
-    res.send(req.user)
-  } catch (error) {
-    console.log("ERROR: ", error)
-  }
-}
