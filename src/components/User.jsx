@@ -12,7 +12,7 @@ const User = () => {
 
   useEffect(() => {
     dispatch(getFavMovies())
-  }, [])
+  }, [dispatch])
 
   const handleDelete = async movieId => {
     await dispatch(removeFavMovie(movieId))

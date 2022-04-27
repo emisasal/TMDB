@@ -1,19 +1,19 @@
-const { Movie, User } = require("../models")
+const { Movie } = require("../models")
 
 exports.getMovies = (req, res) => {
-  const { userId } = req.body
+  const { userId } = req.params
   try {
     Movie.findAll({ where: { userId: userId } })
-      .then(movies => res.send(movies))
-      .catch(err => res.status(500).send(err))
+      .then(movies => {
+        res.send(movies)
+      })
   }catch(err){
     console.log("ERROR: ", err)
   }
 }
-// Seguir con esto!
+
 exports.addMovie = (req, res) => {
   const { userId, movieApi } = req.body
-  console.log("BODY", movieApi)
   try {
     Movie.findOrCreate({ 
       where: { userId, movieApi }, 

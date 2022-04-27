@@ -1,8 +1,7 @@
 import React from "react"
-import axios from "axios"
 import { useDispatch } from "react-redux"
 import useInput from "../hooks/useInputs"
-import { sendLoginRequest } from "../store/user"
+import { sendRegisterRequest, sendLoginRequest } from "../store/user"
 import { Link, useNavigate } from "react-router-dom"
 import { alertRegister } from "../utils/alerts"
 
@@ -16,22 +15,17 @@ const Register = () => {
 
   const handleRegisterSubmit = e => {
     e.preventDefault()
-    axios
-      .post("/api/user/register", {
-        name: name.value,
-        email: email.value,
-        password: password.value,
-      })
-      .then(() =>
-        dispatch(
-          sendLoginRequest({ email: email.value, password: password.value })
-        )
-      )
-      .then(() => {
+    dispatch(sendRegisterRequest(
+      {
+            name: name.value,
+            email: email.value,
+            password: password.value,
+          }
+    ))
+        // dispatch(
+        //   sendLoginRequest({ email: email.value, password: password.value })
         alertRegister()
         navigate("/")
-      })
-      .catch(err => console.log(`Failed login: ${err.message}`))
   }
 
   return (
