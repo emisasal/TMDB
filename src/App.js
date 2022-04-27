@@ -1,8 +1,5 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Route, Routes } from "react-router-dom"
-import { useDispatch } from "react-redux"
-
-import { persistUser } from "./store/user"
 
 import Navbar from "./components/Navbar"
 import Home from "./components/Home"
@@ -18,13 +15,6 @@ import NotFound from "./commons/NotFoud"
 import "./App.css"
 
 const App = () => {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(persistUser())
-      .then(res => res.data)
-      .catch((err) => {console.log(err)})
-  }, [dispatch])
 
   return (
     <div className="has-navbar-fixed-top">

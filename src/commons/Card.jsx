@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { FaRegStar } from "react-icons/fa"
+import { FaRegStar, FaHeart } from "react-icons/fa"
 
-import Favorite from "./Favourite"
 import { postMovie } from "../store/favMovies"
 
 const Card = ({ data, type }) => {
@@ -10,7 +9,7 @@ const Card = ({ data, type }) => {
   const dispatch = useDispatch()
 
   const handleFav = data => {
-    if (type === "movie") return dispatch(postMovie({ data }))
+    if (type === "movie") return dispatch(postMovie(data))
   }
 
   if (!data.id) return <p>No data</p>
@@ -24,40 +23,36 @@ const Card = ({ data, type }) => {
               <img
                 src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                 alt={data.title || data.name}
-              />
+                />
             </figure>
           </div>
+                </Link>
 
-          <div className="card-content level-item">
+          <div className="card-content level-item card-custombody">
             <div className="content">
               <p className="title is-6">{data.title || data.name} </p>
               <div></div>
               <p className="subtitle" id="txt-m">
-                Release date: {`(${data.release_date || data.first_air_date})`}
+                Rel. date: {`(${data.release_date || data.first_air_date})`}
               </p>
-              <p className="subtitle is-6 cardsubt-custom">
-                <FaRegStar style={{ color: "black" }} />{" "}
-                {data.vote_average * 10}%
-              </p>
+              <div className="card-bottom">
+                <p className="subtitle is-6 cardsubt-custom">
+                  <FaRegStar style={{ color: "gray" }} />{" "}
+                  {data.vote_average * 10}%
+                </p>
+                {user.id ? (
+                  <div>
+                    <p onClick={() => handleFav(data.id)}>
+                      <FaHeart
+                        className="heart"
+                        data-hover="Add to Favourites"
+                      />
+                    </p>
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
-        </Link>
-
-        {user.id ? (
-          <footer className="card-footer level-item">
-            <div
-              className="card-footer-item"
-              onClick={() => handleFav(data.id)}
-            >
-              <Favorite />
-            </div>
-            <div className="card-footer-item cardfooter-custom">
-              <p className="content" id="txt-s">
-                add / remove favourites
-              </p>
-            </div>
-          </footer>
-        ) : null}
       </div>
     </>
   )

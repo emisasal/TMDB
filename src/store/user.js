@@ -1,29 +1,18 @@
-import axios from "axios"
 import { createReducer, createAsyncThunk } from "@reduxjs/toolkit"
+import * as usersService from "../services/userServices";
 
-// Login user
-export const sendLoginRequest = createAsyncThunk("LOGIN", val => {
-  return axios
-    .post("/api/user/login", { email: val.email, password: val.password })
-    .then(r => r.data)
-})
+export const sendRegisterRequest = createAsyncThunk("REGISTER", usersService.userRegisterService)
 
-// Logout user
-export const sendLogoutRequest = createAsyncThunk("LOGOUT", () => {
-  return axios.post("/api/user/logout").then(r => r.data)
-})
+export const sendLoginRequest = createAsyncThunk("LOGIN", usersService.userLoginService)
 
-// Persist user
-export const persistUser = createAsyncThunk("PERSIST", () => {
-  return axios.get("/api/user/me").then(r => r.data)
-})
+export const sendLogoutRequest = createAsyncThunk("LOGOUT", usersService.userLogoutService)
 
 const userReducer = createReducer(
   {},
   {
+    [sendRegisterRequest.fulfilled]: (state, action) => action.payload,
     [sendLoginRequest.fulfilled]: (state, action) => action.payload,
     [sendLogoutRequest.fulfilled]: (state, action) => action.payload,
-    [persistUser.fulfilled]: (state, action) => action.payload,
   }
 )
 

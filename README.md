@@ -11,6 +11,8 @@ Utiliza la API pública de TMDB para obtener la información.
 - React
 - Passport (con bcrypt)
 - Redux
-- Postgres
+- Redux-Persist
+- Node.js
+- PostgreSQL
 - Bulma
 
