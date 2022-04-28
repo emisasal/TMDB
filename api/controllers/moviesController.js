@@ -31,7 +31,6 @@ exports.removeMovie = (req, res) => {
   try {
     Movie.destroy({ where: { movieApi: movieApi, userId: userId } })
       .then(() => res.sendStatus(202))
-      .catch(err => res.status(500).send(err))
   } catch (err) {
     console.log("ERROR: ", err)
   }
