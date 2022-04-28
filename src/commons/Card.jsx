@@ -9,25 +9,17 @@ const Card = ({ data, type, movies, shows, user }) => {
   let isFav = false
 
   const handleAddFav = data => {
-    if (type === "movie") {
-        dispatch(postMovie(data))
-        dispatch(getFavMovies())
-    }
-    if (type === "tv") {
-        dispatch(postShow(data))
-        dispatch(getFavShows())
-    }
+    if (type === "movie")
+      return dispatch(postMovie(data)).then(() => dispatch(getFavMovies()))
+    if (type === "tv")
+      return dispatch(postShow(data)).then(() => dispatch(getFavShows()))
   }
 
   const handleRemoveFav = data => {
-    if (type === "movie") {
-        dispatch(removeFavMovie(data))
-        dispatch(getFavMovies())
-    }
-    if (type === "tv") {
-      dispatch(removeShow(data))
-      dispatch(getFavShows())
-    }
+    if (type === "movie")
+      return dispatch(removeFavMovie(data)).then(() => dispatch(getFavMovies()))
+    if (type === "tv")
+      return dispatch(removeShow(data)).then(() => dispatch(getFavShows()))
   }
 
   if (type === "movie" && movies !== []) {
