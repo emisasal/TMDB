@@ -1,80 +1,39 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
-
-import { getFavMovies, removeFavMovie } from "../store/favMovies"
-import { FaFilm, FaRegTrashAlt } from "react-icons/fa"
+import { getFavMovies } from "../store/favMovies"
+import { getFavShows } from "../store/favShows"
+import FavGrid from "./FavGrid"
 
 const User = () => {
-  const user = useSelector(state => state.user)
-  const favMovies = useSelector(state => state.favMovies)
+  const { user, favMovies, favShows } = useSelector(state => state)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getFavMovies())
+    dispatch(getFavShows())
   }, [dispatch])
 
-  const handleDelete = async movieId => {
-    await dispatch(removeFavMovie(movieId))
-    dispatch(getFavMovies())
-  }
-
-  if (!favMovies[0]) return <p>No data</p>
-
-  console.log("FAV_MOVIES", favMovies)
+  if (!favMovies[0] || !favShows[0]) return <div></div>
 
   return (
     <>
       <div className="container is-max-desktop">
         <br />
         <h1 className="title is-5">Welcome {user.name}!</h1>
-      </div>
-      <br />
-      <div>
+        <div></div>
         <p className="subtitle is-6">
-          You have {favMovies.length} movies in your favourites list.
+          You have {favMovies.length}{" "}
+          {favMovies.length === 1 ? "movie" : "movies"} and {favShows.length}{" "}
+          {favShows.length === 1 ? "tv show" : "tv shows"} in your favourites
+          list.
         </p>
+        <hr/>
+        <FavGrid dataList={favMovies} type={"movie"} user={user} />
+        <br />
+        <hr/>
+        <FavGrid dataList={favShows} type={"tv"} user={user} />
       </div>
       <br />
-
-      <div className="table-container">
-      <table className="table is-fullwidth is-striped is-hoverable">
-        <thead>
-          <tr>
-            <th>Movie</th>
-            <th>
-              <abbr title="Details">Details</abbr>
-            </th>
-            <th>
-              <abbr title="Remove">Remove</abbr>
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {favMovies.map((movie, i) => (
-            <tr key={i}>
-              <td>{movie.name}</td>
-              <td>
-                {
-                  <Link to={`/movie/${movie.movie}`}>
-                    <FaFilm style={{ cursor: "pointer" }} />
-                  </Link>
-                }
-              </td>
-              <td>
-                {
-                  <FaRegTrashAlt
-                    style={{ cursor: "pointer" }}
-                    onClick={() => handleDelete(movie.id)}
-                  />
-                }
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      </div>
     </>
   )
 }
