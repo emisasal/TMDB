@@ -13,6 +13,7 @@ Utiliza la API pública de TMDB para obtener la información.
 - Redux
 - Redux-Persist
 - Node.js
+- Sequelize
 - PostgreSQL
 - Bulma
 

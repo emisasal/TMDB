@@ -4,6 +4,6 @@ const moviesController = require("../controllers/moviesController")
 
 router.get("/all/:userId", moviesController.getMovies)
 router.post("/add", moviesController.addMovie)
-router.delete("/remove", moviesController.removeMovie)
+router.post("/remove", moviesController.removeMovie)
 
 module.exports = router

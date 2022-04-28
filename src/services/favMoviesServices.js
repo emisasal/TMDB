@@ -14,7 +14,6 @@ export const getFavMovies = async (usr, thunkAPI) => {
 export const addMovieService = async (movie, thunkAPI) => {
     const { user } = thunkAPI.getState()
     const movieApi = ""+movie
-    if (!user.id) throw new Error("You need to be logged in")
     try {
         const addMovie = await axios.post(`/api/movies/add`, { movieApi: movieApi, userId: user.id })
         return addMovie.data
@@ -25,10 +24,9 @@ export const addMovieService = async (movie, thunkAPI) => {
 
 export const removeFavMovieService = async (movie, thunkAPI) => {
     const { user } = thunkAPI.getState()
-    const movieApi = ""+movie.data
-    if (!user.id) throw new Error("You need to be logged in")
+    const movieApi = ""+movie   
     try {
-        const removeMovie = await axios.delete(`/api/movies/remove`, { movieApi: movieApi, userId: user.id })
+        const removeMovie = await axios.post(`/api/movies/remove`, { movieApi: movieApi, userId: user.id })
         return removeMovie.data
     } catch(error) {
         throw error

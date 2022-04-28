@@ -13,6 +13,7 @@ import logger from "redux-logger"
 
 import userReducer from "./user"
 import favMoviesReducer from "./favMovies"
+import favShowsReducer from "./favShows"
 
 const persistConfig = {
   key: "root",
@@ -31,6 +32,7 @@ const store = configureStore({
   reducer: {
     user: persistedReducer,
     favMovies: favMoviesReducer,
+    favShows: favShowsReducer
   },
 })
 
