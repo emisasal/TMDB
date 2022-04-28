@@ -1,18 +1,47 @@
 import { Link } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import { FaRegStar, FaHeart } from "react-icons/fa"
+import { useDispatch } from "react-redux"
+import { FaStar, FaHeart, FaTimesCircle } from "react-icons/fa"
+import { postMovie, removeFavMovie, getFavMovies } from "../store/favMovies"
+import { postShow, removeShow, getFavShows } from "../store/favShows"
 
-import { postMovie } from "../store/favMovies"
-
-const Card = ({ data, type }) => {
-  const user = useSelector(state => state.user)
+const Card = ({ data, type, movies, shows, user }) => {
   const dispatch = useDispatch()
+  let isFav = false
 
-  const handleFav = data => {
-    if (type === "movie") return dispatch(postMovie(data))
+  const handleAddFav = data => {
+    if (type === "movie") {
+        dispatch(postMovie(data))
+        dispatch(getFavMovies())
+    }
+    if (type === "tv") {
+        dispatch(postShow(data))
+        dispatch(getFavShows())
+    }
   }
 
-  if (!data.id) return <p>No data</p>
+  const handleRemoveFav = data => {
+    if (type === "movie") {
+        dispatch(removeFavMovie(data))
+        dispatch(getFavMovies())
+    }
+    if (type === "tv") {
+      dispatch(removeShow(data))
+      dispatch(getFavShows())
+    }
+  }
+
+  if (type === "movie" && movies !== []) {
+    movies.forEach(e => {
+      if (e.movieApi === "" + data.id) return (isFav = true)
+    })
+  }
+  if (type === "tv" && shows !== []) {
+    shows.forEach(e => {
+      if (e.showApi === "" + data.id) return (isFav = true)
+    })
+  }
+
+  if (!data.id) return <div></div>
 
   return (
     <>
@@ -23,36 +52,45 @@ const Card = ({ data, type }) => {
               <img
                 src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                 alt={data.title || data.name}
-                />
+              />
             </figure>
           </div>
-                </Link>
+        </Link>
 
-          <div className="card-content level-item card-custombody">
-            <div className="content">
-              <p className="title is-6">{data.title || data.name} </p>
-              <div></div>
-              <p className="subtitle" id="txt-m">
-                Rel. date: {`(${data.release_date || data.first_air_date})`}
+        <div className="card-content level-item card-custombody">
+          <div className="content">
+            <p className="title is-6">{data.title || data.name} </p>
+            <div></div>
+            <p className="subtitle" id="txt-m">
+              Rel. date: {`(${data.release_date || data.first_air_date})`}
+            </p>
+            <div className="card-bottom">
+              <p className="subtitle is-6 cardsubt-custom">
+                <FaStar style={{ color: "hsl(45, 83%, 56%)" }} />{" "}
+                {data.vote_average * 10}%
               </p>
-              <div className="card-bottom">
-                <p className="subtitle is-6 cardsubt-custom">
-                  <FaRegStar style={{ color: "gray" }} />{" "}
-                  {data.vote_average * 10}%
-                </p>
-                {user.id ? (
-                  <div>
-                    <p onClick={() => handleFav(data.id)}>
-                      <FaHeart
-                        className="heart"
-                        data-hover="Add to Favourites"
-                      />
+              {user.id ? (
+                <div>
+                  {!isFav ? (
+                    <p
+                      className="heart tooltip"
+                      onClick={() => handleAddFav(data.id)}
+                    >
+                      <FaHeart data-hover="Add to Favourites" />
                     </p>
-                  </div>
-                ) : null}
-              </div>
+                  ) : (
+                    <p
+                      className="trash"
+                      onClick={() => handleRemoveFav(data.id)}
+                    >
+                      <FaTimesCircle data-hover="Remove from Favourites" />
+                    </p>
+                  )}
+                </div>
+              ) : null}
             </div>
           </div>
+        </div>
       </div>
     </>
   )

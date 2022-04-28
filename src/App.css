@@ -26,7 +26,6 @@ button {
   justify-content: space-evenly;
   height: 150px;
   padding: 5px 13px;
-  /* width: 100%; */
 }
 
 .card-bottom {
@@ -42,13 +41,24 @@ button {
 
 .heart {
   cursor: "pointer";
-  color:gray
+  color:hsl(348, 100%, 77%)
 }
 
 .heart:hover {
   color:hsl(348, 100%, 61%);
   transform: scale(1.5);
   content: "Add to Favourites";
+}
+
+.trash {
+  cursor: "pointer";
+  color:gray;
+}
+
+.trash:hover {
+  color:black;
+  transform: scale(1.5);
+  content: "Remove from Favourites";
 }
 
 .tooltip .tooltiptext {
