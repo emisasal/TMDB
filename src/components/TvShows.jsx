@@ -17,10 +17,9 @@ const TvShows = () => {
   return (
     <>
       <br />
-      <h2 className="title is-5">TV Shows:</h2>
-      <hr></hr>
-      <br />
+      <h2 className="title is-5">Newest Tv Shows</h2>
       <Grid dataList={dataList} type={"tv"} />
+      <hr></hr>
     </>
   )
 }

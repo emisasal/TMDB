@@ -9,7 +9,7 @@ button {
 .title-custom {
   text-align: center;
 }
-
+/* Cards styles */
 .card-custom {
   border-radius: 17px;
   width: 180px;
@@ -32,11 +32,7 @@ button {
   display: flex;
   justify-content: space-between;
   padding: 0 7px;
-  /* margin-top: 20px; */
   align-items: center;
-  /* display:block; */
-  /* width:100%; */
-  /* height:40px; */
 }
 
 .heart {
@@ -65,7 +61,7 @@ button {
   width: 120px;
   bottom: 100%;
   left: 50%;
-  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  margin-left: -60px;
 }
 
 .single-custom {
@@ -86,6 +82,11 @@ button {
   font-size: x-large;
   font-weight: bold;
   transform: scaleY(1.3);
+}
+/* Carousel styles */
+.slick-prev:before,
+.slick-next:before {
+  color: gray !important;
 }
 
 #txt-m {

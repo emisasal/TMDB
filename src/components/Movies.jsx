@@ -18,10 +18,9 @@ const Movies = () => {
     <>
       <div>
         <br />
-        <h2 className="title is-5">Movies:</h2>
-        <hr></hr>
-        <br />
+        <h2 className="title is-5">Latest Movies</h2>
         <Grid dataList={dataList} type={"movie"} />
+        <hr></hr>
       </div>
     </>
   )
