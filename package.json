@@ -23,11 +23,13 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "^4.0.3",
+    "react-slick": "^0.29.0",
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "sequelize": "^6.17.0",
+    "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.4.8"
   },
   "scripts": {
