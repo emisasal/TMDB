@@ -16,10 +16,12 @@ const TvShows = () => {
 
   return (
     <>
+    <div className="container">
       <br />
       <h2 className="title is-5">Newest Tv Shows</h2>
       <Grid dataList={dataList} type={"tv"} />
       <hr></hr>
+      </div>
     </>
   )
 }
