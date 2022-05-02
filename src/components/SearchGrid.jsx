@@ -7,7 +7,7 @@ import { getFavMovies } from "../store/favMovies"
 import { getFavShows } from "../store/favShows"
 import Card from "../commons/Card"
 
-const Grid = ({ dataList, type }) => {
+const SearchGrid = ({ dataList }) => {
   const { favMovies, favShows, user } = useSelector(state => state)
   const dispatch = useDispatch()
 
@@ -61,7 +61,7 @@ const Grid = ({ dataList, type }) => {
             <div className="column" key={i}>
               <Card
                 data={elem}
-                type={type}
+                type={elem.media_type}
                 movies={favMovies}
                 shows={favShows}
                 user={user}
@@ -76,4 +76,4 @@ const Grid = ({ dataList, type }) => {
   )
 }
 
-export default Grid
+export default SearchGrid

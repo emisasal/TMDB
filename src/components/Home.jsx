@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom"
 import { FaSearch } from "react-icons/fa"
 import useInput from "../hooks/useInputs"
 
-import Movies from "./Movies"
-import TvShows from "./TvShows"
+import LatestMovies from "./LatestMovies"
+import NewestTvShows from "./NewestTvShows"
 
 const Home = () => {
   const navigate = useNavigate()
@@ -21,21 +21,25 @@ const Home = () => {
       <div className="container is-max-desktop has-icons-right">
         <form onSubmit={handleSubmit}>
           <p className="control has-icons-right">
-          <input
-            {...search}
-            className="input is-medium"
-            type="text"
-            placeholder="Search for a movie or tv show..."
+            <input
+              {...search}
+              className="input is-medium"
+              type="text"
+              placeholder="Search for a movie or tv show..."
             ></input>
             <span className="icon is-small is-right">
-            <FaSearch/>
+              <FaSearch />
             </span>
-            </p>
+          </p>
         </form>
       </div>
       <br />
-      <Movies />
-      <TvShows />
+      <div className="carousel-custom">
+        <LatestMovies />
+      </div>
+      <div className="carousel-custom">
+        <NewestTvShows />
+      </div>
     </>
   )
 }
