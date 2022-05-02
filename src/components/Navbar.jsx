@@ -32,8 +32,7 @@ const Navbar = () => {
   })
 
   const logoutClick = () => {
-    dispatch(sendLogoutRequest())
-    .then(res => {
+    dispatch(sendLogoutRequest()).then(res => {
       alertLogout()
       navigate("/")
     })
@@ -44,10 +43,10 @@ const Navbar = () => {
       <nav className="navbar mb-4 is-spaced is-fixed-top has-background-dark">
         <div className="navbar-brand">
           <Link to="/">
-          <h3 className="navbar-item has-text-primary-light" id="title">
-            <FaFilm  />
-            TMDB
-          </h3>
+            <h3 className="navbar-item has-text-primary-light" id="title">
+              <FaFilm />
+              TMDB
+            </h3>
           </Link>
 
           <button
@@ -66,23 +65,25 @@ const Navbar = () => {
         <div className="navbar-menu has-background-dark" id="navMenu">
           <div className="navbar-start">
             <Link to="movie">
-              <button className="navbar-item button is-ghost has-text-link-light">Movies</button>
+              <button className="navbar-item button is-ghost has-text-link-light">
+                Movies
+              </button>
             </Link>
             <Link to="tv">
-              <button className="navbar-item button is-ghost has-text-link-light">TV Series</button>
+              <button className="navbar-item button is-ghost has-text-link-light">
+                Tv Shows
+              </button>
             </Link>
-            {/* <Link to="/">
-              <button className="navbar-item button is-ghost has-text-link-light">Search</button>
-            </Link> */}
           </div>
         </div>
 
         <div className="navbar-end">
           <div className="navbar-item">
-
             {user.id ? (
               <Link to="user">
-              <button className="button is-small is-responsive is-rounded is-black">{user.name}</button>
+                <button className="button is-small is-responsive is-rounded is-black">
+                  {user.name}
+                </button>
               </Link>
             ) : (
               <Link to="register">
@@ -93,8 +94,11 @@ const Navbar = () => {
             )}
 
             {user.id ? (
-              <span>              
-                <button className="button is-small is-responsive is-rounded is-danger" onClick={logoutClick}>
+              <span>
+                <button
+                  className="button is-small is-responsive is-rounded is-danger"
+                  onClick={logoutClick}
+                >
                   Logout
                 </button>
               </span>
@@ -105,7 +109,6 @@ const Navbar = () => {
                 </button>
               </Link>
             )}
-
           </div>
         </div>
       </nav>

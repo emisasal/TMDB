@@ -27,7 +27,7 @@ const SelectById = () => {
 
   return (
     <>
-      <div className="columns is-desktop box single-custom">
+      <div className="columns is-desktop box single-custom single-descript">
         <div className="column is-4">
           <img
             id="img-l"

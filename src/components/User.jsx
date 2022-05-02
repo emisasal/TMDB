@@ -27,10 +27,12 @@ const User = () => {
           {favShows.length === 1 ? "tv show" : "tv shows"} in your favourites
           list.
         </p>
-        <hr/>
+        <hr />
+        <h2 className="title is-5 title-custom">Movies</h2>
         <FavGrid dataList={favMovies} type={"movie"} user={user} />
         <br />
-        <hr/>
+        <hr />
+        <h2 className="title is-5 title-custom">Tv Shows</h2>
         <FavGrid dataList={favShows} type={"tv"} user={user} />
       </div>
       <br />
