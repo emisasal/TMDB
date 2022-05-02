@@ -17,7 +17,7 @@ const User = () => {
 
   return (
     <>
-      <div className="container is-max-desktop">
+      <div className="container">
         <br />
         <h1 className="title is-5">Welcome {user.name}!</h1>
         <div></div>
