@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom"
 import axios from "axios"
 
 import { API_KEY, tmdbAPI } from "../utils/apiValues"
-import Grid from "../components/Grid"
+import SearchGrid from "../components/SearchGrid"
 
 const SearchList = () => {
   const { state } = useLocation()
@@ -21,9 +21,9 @@ const SearchList = () => {
   return (
     <>
       <br />
-      <h2>Search Results:</h2>
+      <h2 className="title is-5">Search Results:</h2>
       <br />
-      <Grid dataList={searched.results} />
+      <SearchGrid dataList={searched.results} />
     </>
   )
 }
