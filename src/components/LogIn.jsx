@@ -22,9 +22,10 @@ const LogIn = () => {
 
   return (
     <>
+    <div className="is-fullheight-login">
       <div className="box column is-half is-offset-one-quarter form-custom">
         <form className="section" onSubmit={handleLoginSubmit}>
-        <h1 className="title title-custom">Login</h1>
+        <h1 className="title title-customreg">Login</h1>
           <div className="field">
             <label className="label">Email</label>
             <div className="control">
@@ -66,6 +67,8 @@ const LogIn = () => {
           </div>
         </form>
       </div>
+      </div>
+      <div className="column"></div>
     </>
   )
 }

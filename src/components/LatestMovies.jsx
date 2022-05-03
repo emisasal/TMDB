@@ -18,7 +18,9 @@ const LatestMovies = () => {
     <>
       <div className="container">
         <br />
+
         <h2 className="title is-5 title-custom">Latest Movie Releases</h2>
+
         <Grid dataList={dataList} type={"movie"} />
         <hr></hr>
       </div>

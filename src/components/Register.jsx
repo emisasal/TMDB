@@ -30,9 +30,10 @@ const Register = () => {
 
   return (
     <>
+    <div className="is-fullheight-reg">
       <div className="box column is-half is-offset-one-quarter form-custom">
-          <form className="section" onSubmit={handleRegisterSubmit}>
-            <h1 className="title title-custom">Create Account</h1>
+          <form className="section " onSubmit={handleRegisterSubmit}>
+            <h1 className="title title-customreg">Create Account</h1>
             <div className="field">
               <label className="label">Name</label>
               <div className="control">
@@ -87,6 +88,8 @@ const Register = () => {
               </div>
             </div>
           </form>
+      </div>
+      <div className="column"></div>
       </div>
     </>
   )
