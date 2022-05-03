@@ -1,5 +1,5 @@
-import { FaLinkedin, FaLinkedinIn, FaGithubSquare } from "react-icons/fa"
-import { Link } from "react-router-dom"
+import { FaLinkedin, FaGithubSquare } from "react-icons/fa"
+
 
 const Footer = () => {
     return (

@@ -15,23 +15,25 @@ const Register = () => {
 
   const handleRegisterSubmit = e => {
     e.preventDefault()
-    dispatch(sendRegisterRequest(
-      {
-            name: name.value,
-            email: email.value,
-            password: password.value,
-          }
-    ))
-        // dispatch(
-        //   sendLoginRequest({ email: email.value, password: password.value })
-        alertRegister()
-        navigate("/")
+    dispatch(
+      sendRegisterRequest({
+        name: name.value,
+        email: email.value,
+        password: password.value,
+      })
+    ).then(() =>
+      dispatch(
+        sendLoginRequest({ email: email.value, password: password.value })
+      )
+    )
+    alertRegister()
+    navigate("/")
   }
 
   return (
     <>
-    <div className="is-fullheight-reg">
-      <div className="box column is-half is-offset-one-quarter form-custom">
+      <div className="is-fullheight-reg">
+        <div className="box column is-half is-offset-one-quarter form-custom">
           <form className="section " onSubmit={handleRegisterSubmit}>
             <h1 className="title title-customreg">Create Account</h1>
             <div className="field">
@@ -88,8 +90,8 @@ const Register = () => {
               </div>
             </div>
           </form>
-      </div>
-      <div className="column"></div>
+        </div>
+        <div className="column"></div>
       </div>
     </>
   )
