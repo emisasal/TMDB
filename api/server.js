@@ -25,19 +25,19 @@ app.use(
     resave: true,
     saveUninitialized: true,
   })
-  )
-  
-  app.use(passport.initialize())
-  app.use(passport.session())
-  
-  passport.use(
-    new localStrategy(
-      {
-        usernameField: "email",
-        passwordField: "password",
-      },
-      function (email, password, done) {
-        User.findOne({ where: { email } })
+)
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+passport.use(
+  new localStrategy(
+    {
+      usernameField: "email",
+      passwordField: "password",
+    },
+    function (email, password, done) {
+      User.findOne({ where: { email } })
         .then(user => {
           if (!user) {
             return done(null, false)
@@ -46,36 +46,35 @@ app.use(
             if (hash !== user.password) {
               return done(null, false)
             }
-            
+
             return done(null, user)
           })
         })
         .catch(done)
-      }
-      )
-      )
-      
-      passport.serializeUser(function (user, done) {
-        done(null, user.id)
-      })
-      
-      passport.deserializeUser(function (id, done) {
-        User.findByPk(id)
-        .then(user => {
-          done(null, user)
-        })
-        .catch(done)
-      })
-      
-      app.use((err, req, res, next) => {
-        res.status(500).send(err.message)
-      })
+    }
+  )
+)
 
-      app.use("/api", routes)
-      
-      db.sync({ force: false }).then(() => {
-        app.listen(PORT, () => {
-          console.log("Escuchando en el puerto ", PORT)
-        })
-      })
-      
+passport.serializeUser(function (user, done) {
+  done(null, user.id)
+})
+
+passport.deserializeUser(function (id, done) {
+  User.findByPk(id)
+    .then(user => {
+      done(null, user)
+    })
+    .catch(done)
+})
+
+app.use((err, req, res, next) => {
+  res.status(500).send(err.message)
+})
+
+app.use("/api", routes)
+
+db.sync({ force: false }).then(() => {
+  app.listen(PORT, () => {
+    console.log("Escuchando en el puerto ", PORT)
+  })
+})
