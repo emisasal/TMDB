@@ -29,13 +29,15 @@ const User = () => {
         </p>
         <hr />
         <h2 className="title is-5 title-custom">Movies</h2>
+        <br />
         <FavGrid dataList={favMovies} type={"movie"} user={user} />
         <br />
         <hr />
         <h2 className="title is-5 title-custom">Tv Shows</h2>
+        <br />
         <FavGrid dataList={favShows} type={"tv"} user={user} />
-      </div>
       <br />
+      </div>
     </>
   )
 }

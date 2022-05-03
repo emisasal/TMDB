@@ -11,6 +11,7 @@ import Register from "./components/Register"
 import LogIn from "./components/LogIn"
 import User from "./components/User"
 import NotFound from "./commons/NotFoud"
+import Footer from "./commons/Footer"
 
 import "./App.css"
 
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="*" element={<NotFound replace to="/" />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   )
 }
