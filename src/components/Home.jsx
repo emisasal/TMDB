@@ -34,10 +34,10 @@ const Home = () => {
         </form>
       </div>
       <br />
-      <div className="carousel-custom">
+      <div>
         <LatestMovies />
       </div>
-      <div className="carousel-custom">
+      <div>
         <NewestTvShows />
       </div>
     </>
