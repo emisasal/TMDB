@@ -58,6 +58,7 @@ const Card = ({ data, type, movies, shows, user }) => {
             </p>
             </div>
             <div className="card-bottom">
+              {/* <br/> */}
               <p className="subtitle is-6 cardsubt-custom">
                 <FaStar style={{ color: "hsl(45, 83%, 56%)" }} />{" "}
                 {data.vote_average * 10}%
