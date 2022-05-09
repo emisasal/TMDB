@@ -4,6 +4,7 @@ import axios from "axios"
 
 import { API_KEY, tmdbAPI } from "../utils/apiValues"
 import SearchGrid from "../components/SearchGrid"
+import SearchBar from "./SearchBar"
 
 const SearchList = () => {
   const { state } = useLocation()
@@ -20,9 +21,10 @@ const SearchList = () => {
 
   return (
     <>
+    <SearchBar />
       <div className="is-fullheight-not">
         <br />
-        <h2 className="title is-5">Search Results:</h2>
+        <h2 className="title is-5">Search Results for {state.query}:</h2>
         <br />
         <SearchGrid dataList={searched.results} />
       </div>
