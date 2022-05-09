@@ -10,6 +10,10 @@ html {
   height: 76.2vh;
 }
 
+.is-fullheight-not {
+  height: 79.6vh;
+}
+
 button {
   margin-right: 6px;
 }
