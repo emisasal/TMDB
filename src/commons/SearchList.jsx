@@ -16,7 +16,7 @@ const SearchList = () => {
       .then(match => setSearched(match))
   }, [state.query])
 
-  if (!searched.page) return <p> </p>
+  if (!searched.page) return <div> </div>
 
   return (
     <>

@@ -33,7 +33,7 @@
     "sweetalert2": "^11.4.8"
   },
   "scripts": {
-    "start": "concurrently 'npm run server' 'npm run client'",
+    "start": "concurrently 'npm run server' 'PORT=3000 npm run client'",
     "server": "nodemon api/server.js",
     "client": "react-scripts start",
     "build": "react-scripts build"
