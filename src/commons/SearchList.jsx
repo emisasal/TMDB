@@ -20,10 +20,12 @@ const SearchList = () => {
 
   return (
     <>
-      <br />
-      <h2 className="title is-5">Search Results:</h2>
-      <br />
-      <SearchGrid dataList={searched.results} />
+      <div className="is-fullheight-not">
+        <br />
+        <h2 className="title is-5">Search Results:</h2>
+        <br />
+        <SearchGrid dataList={searched.results} />
+      </div>
     </>
   )
 }
