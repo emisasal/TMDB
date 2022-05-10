@@ -20,14 +20,14 @@ const Register = () => {
         name: name.value,
         email: email.value,
         password: password.value,
+        alertRegister,
+        navigate
       })
     ).then(() =>
       dispatch(
         sendLoginRequest({ email: email.value, password: password.value })
       )
     )
-    alertRegister()
-    navigate("/")
   }
 
   return (
