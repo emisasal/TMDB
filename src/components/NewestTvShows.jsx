@@ -1,7 +1,5 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-
-import { API_KEY, tmdbAPI } from "../utils/apiValues"
 import Grid from "./Grid"
 
 const NewestTvShows = () => {
@@ -9,7 +7,9 @@ const NewestTvShows = () => {
 
   useEffect(() => {
     axios
-      .get(`${tmdbAPI}/tv/popular${API_KEY}`)
+      .get(
+        `${process.env.REACT_APP_tmdbAPI}/tv/popular${process.env.REACT_APP_API_KEY}`
+      )
       .then(res => res.data.results)
       .then(tvList => setDataList(tvList))
   }, [])

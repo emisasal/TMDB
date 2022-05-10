@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import axios from "axios"
-
-import { API_KEY, tmdbAPI } from "../utils/apiValues"
 import SearchGrid from "../components/SearchGrid"
 import SearchBar from "./SearchBar"
 
@@ -12,7 +10,7 @@ const SearchList = () => {
 
   useEffect(() => {
     axios
-      .get(`${tmdbAPI}/search/multi${API_KEY}&query=${state.query}`)
+      .get(`${process.env.REACT_APP_tmdbAPI}/search/multi${process.env.REACT_APP_API_KEY}&query=${state.query}`)
       .then(res => res.data)
       .then(match => setSearched(match))
   }, [state.query])

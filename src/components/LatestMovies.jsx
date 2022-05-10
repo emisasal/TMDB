@@ -9,7 +9,9 @@ const LatestMovies = () => {
 
   useEffect(() => {
     axios
-      .get(`${tmdbAPI}/movie/now_playing${API_KEY}`)
+      .get(
+        `${process.env.REACT_APP_tmdbAPI}/movie/now_playing${process.env.REACT_APP_API_KEY}`
+      )
       .then(res => res.data.results)
       .then(list => setDataList(list))
   }, [])

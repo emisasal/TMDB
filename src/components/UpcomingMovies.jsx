@@ -1,7 +1,5 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-
-import { API_KEY, tmdbAPI } from "../utils/apiValues"
 import Grid from "./Grid"
 
 const UpcomingMovies = () => {
@@ -9,7 +7,9 @@ const UpcomingMovies = () => {
 
   useEffect(() => {
     axios
-      .get(`${tmdbAPI}/movie/upcoming${API_KEY}`)
+      .get(
+        `${process.env.REACT_APP_tmdbAPI}/movie/upcoming${process.env.REACT_APP_API_KEY}`
+      )
       .then(res => res.data.results)
       .then(list => setDataList(list))
   }, [])

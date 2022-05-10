@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
-
-import { API_KEY, tmdbAPI } from "../utils/apiValues"
 import { Director, Creator, Credits } from "../components/Director"
 import { timeConvert, yearOnly } from "../utils/functions"
 
@@ -14,16 +12,20 @@ const SelectById = () => {
 
   useEffect(() => {
     axios
-      .get(`${tmdbAPI}/${type}/${id}${API_KEY}`)
+      .get(
+        `${process.env.REACT_APP_tmdbAPI}/${type}/${id}${process.env.REACT_APP_API_KEY}`
+      )
       .then(res => res.data)
       .then(selectId => setData(selectId))
     axios
-      .get(`${tmdbAPI}/${type}/${id}/credits${API_KEY}`)
+      .get(
+        `${process.env.REACT_APP_tmdbAPI}/${type}/${id}/credits${process.env.REACT_APP_API_KEY}`
+      )
       .then(res => res.data)
       .then(cred => setCredits(cred))
   }, [type, id])
 
-  if (!data.id || !credits.id) return <p>No data</p>
+  if (!data.id || !credits.id) return <div> </div>
 
   return (
     <>
