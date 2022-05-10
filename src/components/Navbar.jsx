@@ -1,15 +1,12 @@
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
-
 import { FaFilm } from "react-icons/fa"
-
 import { sendLogoutRequest } from "../store/user"
 import { alertLogout } from "../utils/alerts"
 
 const Navbar = () => {
   const user = useSelector(state => state.user)
-
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -32,10 +29,7 @@ const Navbar = () => {
   })
 
   const logoutClick = () => {
-    dispatch(sendLogoutRequest()).then(res => {
-      alertLogout()
-      navigate("/")
-    })
+    dispatch(sendLogoutRequest({ alertLogout, navigate }))
   }
 
   return (

@@ -5,16 +5,20 @@ import axios from "axios"
 import { FaStar, FaTimesCircle } from "react-icons/fa"
 import { removeFavMovie, getFavMovies } from "../store/favMovies"
 import { removeShow, getFavShows } from "../store/favShows"
-import { API_KEY, tmdbAPI } from "../utils/apiValues"
 
 const Card = ({ data, type, user, dataList }) => {
-  const [ apiData, setApiData ] = useState({})
+  const [apiData, setApiData] = useState({})
   const dispatch = useDispatch()
   let isFav = false
 
-  useEffect(()=>{
-    axios.get(`${tmdbAPI}/${type}/${type === "movie" ? data.movieApi : data.showApi}${API_KEY}`)
-    .then((res)=> setApiData(res.data))
+  useEffect(() => {
+    axios
+      .get(
+        `${process.env.REACT_APP_tmdbAPI}/${type}/${
+          type === "movie" ? data.movieApi : data.showApi
+        }${process.env.REACT_APP_API_KEY}`
+      )
+      .then(res => setApiData(res.data))
   }, [data, type])
 
   const handleRemoveFav = data => {
@@ -35,7 +39,7 @@ const Card = ({ data, type, user, dataList }) => {
     })
   }
 
-  if (!data.id) return <div></div>
+  if (!data.id) return <div> </div>
 
   return (
     <>
@@ -65,12 +69,12 @@ const Card = ({ data, type, user, dataList }) => {
               </p>
               {user.id ? (
                 <div>
-                    <p
-                      className="trash"
-                      onClick={() => handleRemoveFav(apiData.id)}
-                    >
-                      <FaTimesCircle data-hover="Remove from Favourites" />
-                    </p>              
+                  <p
+                    className="trash"
+                    onClick={() => handleRemoveFav(apiData.id)}
+                  >
+                    <FaTimesCircle data-hover="Remove from Favourites" />
+                  </p>
                 </div>
               ) : null}
             </div>

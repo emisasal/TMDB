@@ -14,6 +14,20 @@ export const alertLogin = () => {
       })
 }
 
+export const alertNoUser = () => {
+  let timerInterval
+  return Swal.fire({
+      title: 'User not Registered!',
+      timer: 1000,
+      didOpen: () => {
+        Swal.showLoading()
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    })
+}
+
 export const alertRegister = () => {
   let timerInterval
   return Swal.fire({
