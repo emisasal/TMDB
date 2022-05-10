@@ -21,7 +21,7 @@ const Register = () => {
         email: email.value,
         password: password.value,
         alertRegister,
-        navigate
+        navigate,
       })
     ).then(() =>
       dispatch(

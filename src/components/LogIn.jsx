@@ -9,7 +9,6 @@ const LogIn = () => {
   const dispatch = useDispatch()
   const email = useInput("email")
   const password = useInput("password")
-
   const navigate = useNavigate()
 
   const handleLoginSubmit = async e => {

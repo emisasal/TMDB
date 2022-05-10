@@ -33,7 +33,7 @@ const Card = ({ data, type, movies, shows, user }) => {
     })
   }
 
-  if (!data.id) return <div></div>
+  if (!data.id) return <div> </div>
 
   return (
     <>
@@ -53,9 +53,9 @@ const Card = ({ data, type, movies, shows, user }) => {
           <div className="content">
             <p className="title is-6">{data.title || data.name} </p>
             <div>
-            <p className="subtitle" id="txt-m">
-              Rel. date: {`(${data.release_date || data.first_air_date})`}
-            </p>
+              <p className="subtitle" id="txt-m">
+                Rel. date: {`(${data.release_date || data.first_air_date})`}
+              </p>
             </div>
             <div className="card-bottom">
               {/* <br/> */}

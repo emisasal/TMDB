@@ -37,9 +37,11 @@ export const userLoginService = async ({
   }
 }
 
-export const userLogoutService = async () => {
+export const userLogoutService = async ({ alertLogout, navigate }) => {
   try {
     const logoutUser = await axios.post("/api/user/logout")
+    alertLogout()
+    navigate("/")
     return logoutUser.data
   } catch (error) {
     throw error
