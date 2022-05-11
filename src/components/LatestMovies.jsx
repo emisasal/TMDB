@@ -1,7 +1,5 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-
-import { API_KEY, tmdbAPI } from "../utils/apiValues"
 import Grid from "./Grid"
 
 const LatestMovies = () => {
